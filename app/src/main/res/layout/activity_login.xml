@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".LoginActivity">
 
     <LinearLayout
-        android:id="@+id/ll_register"
+        android:id="@+id/ll_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"
-                android:inputType="text" />
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -46,39 +46,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:inputType="textPassword" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_konfirmasi_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <EditText
-                android:id="@+id/et_konfirmasi_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Konfirmasi Password"
                 android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:text="Login"
             android:textAllCaps="true"
             android:layout_marginTop="16dp"/>
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_register"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sudah pernah daftar? Silakan langsung login!"
+            android:text="Belum punya Akun? Silakan register dulu!"
             android:textAllCaps="false"
             android:textSize="14sp"/>
 
@@ -88,7 +73,7 @@
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_register"
+        android:layout_below="@+id/ll_login"
         android:layout_centerHorizontal="true"
         android:visibility="gone"/>
 
