@@ -23,4 +23,10 @@ public interface APIService {
     Call<ValueNoData> register(@Field("key") String key,
                                @Field("username") String username,
                                @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("insertPost")
+    Call<ValueNoData> addPost(@Field("key") String key,
+                              @Field("username") String username,
+                              @Field("content") String content);
 }

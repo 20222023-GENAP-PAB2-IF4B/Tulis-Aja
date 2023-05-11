@@ -5,5 +5,11 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <style name="Base.Theme.TulisAja.ActionBar" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
     <style name="Theme.TulisAja" parent="Base.Theme.TulisAja" />
+    <style name="Theme.TulisAja.ActionBar" parent="Base.Theme.TulisAja.ActionBar" />
 </resources>
