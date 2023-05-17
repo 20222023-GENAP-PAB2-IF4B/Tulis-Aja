@@ -29,4 +29,15 @@ public interface APIService {
     Call<ValueNoData> addPost(@Field("key") String key,
                               @Field("username") String username,
                               @Field("content") String content);
+
+    @FormUrlEncoded
+    @POST("updatePost")
+    Call<ValueNoData> updatePost(@Field("key") String key,
+                                 @Field("id") String id,
+                                 @Field("content") String content);
+
+    @FormUrlEncoded
+    @POST("deletePost")
+    Call<ValueNoData> deletePost(@Field("key") String key,
+                                 @Field("id") String id);
 }

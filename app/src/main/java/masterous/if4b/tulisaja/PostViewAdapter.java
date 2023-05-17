@@ -14,10 +14,15 @@ import masterous.if4b.tulisaja.databinding.PostItemBinding;
 
 public class PostViewAdapter extends RecyclerView.Adapter<PostViewAdapter.ViewHolder> {
     private List<Post> data = new ArrayList<>();
+    private OnItemLongClickListener onItemLongClickListener;
 
     public void setData(List<Post> data) {
         this.data = data;
         notifyDataSetChanged();
+    }
+
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
     }
 
     @NonNull
@@ -33,6 +38,14 @@ public class PostViewAdapter extends RecyclerView.Adapter<PostViewAdapter.ViewHo
         holder.postItemBinding.tvUsername.setText(post.getUsername());
         holder.postItemBinding.tvContent.setText(post.getContent());
         holder.postItemBinding.tvCreatedDate.setText(post.getCreated_date());
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                onItemLongClickListener.onItemLongClick(v, pos);
+                return false;
+            }
+        });
     }
 
     @Override
@@ -47,5 +60,9 @@ public class PostViewAdapter extends RecyclerView.Adapter<PostViewAdapter.ViewHo
             super(itemView.getRoot());
             postItemBinding = itemView;
         }
+    }
+
+    public interface OnItemLongClickListener {
+        void onItemLongClick(View v, int position);
     }
 }
