@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void deletePost(String id) {
         APIService api = Utility.getRetrofit().create(APIService.class);
-        Call<ValueNoData> call = api.deletePost("dirumahaja", id);
+        Call<ValueNoData> call = api.deletePost(id);
         call.enqueue(new Callback<ValueNoData>() {
             @Override
             public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
     private void getAllPost() {
         binding.progressBar.setVisibility(View.VISIBLE);
         APIService api = Utility.getRetrofit().create(APIService.class);
-        Call<ValueData<List<Post>>> call = api.getPost("dirumahaja");
+        Call<ValueData<List<Post>>> call = api.getPost();
         call.enqueue(new Callback<ValueData<List<Post>>>() {
             @Override
             public void onResponse(Call<ValueData<List<Post>>> call, Response<ValueData<List<Post>>> response) {

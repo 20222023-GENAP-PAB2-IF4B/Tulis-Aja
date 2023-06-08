@@ -35,17 +35,17 @@ public class AddPostActivity extends AppCompatActivity {
                 }
 
                 if (bolehPost) {
-                    String username = Utility.getValue(AddPostActivity.this, "xUsername");
-                    addPost(username, content);
+                    String userId = Utility.getValue(AddPostActivity.this, "xUserId");
+                    addPost(userId, content);
                 }
             }
         });
     }
 
-    private void addPost(String username, String content) {
+    private void addPost(String userId, String content) {
         binding.progressBar.setVisibility(View.VISIBLE);
         APIService api = Utility.getRetrofit().create(APIService.class);
-        Call<ValueNoData> call = api.addPost("dirumahaja", username, content);
+        Call<ValueNoData> call = api.addPost(userId, content);
         call.enqueue(new Callback<ValueNoData>() {
             @Override
             public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {

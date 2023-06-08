@@ -48,7 +48,7 @@ public class UpdatePostActivity extends AppCompatActivity {
     private void updatePost(String id, String content) {
         binding.progressBar.setVisibility(View.VISIBLE);
         APIService api = Utility.getRetrofit().create(APIService.class);
-        Call<ValueNoData> call = api.updatePost("dirumahaja", id, content);
+        Call<ValueNoData> call = api.updatePost(id, content);
         call.enqueue(new Callback<ValueNoData>() {
             @Override
             public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {

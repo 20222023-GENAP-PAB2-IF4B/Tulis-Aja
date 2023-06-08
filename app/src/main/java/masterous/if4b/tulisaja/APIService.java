@@ -3,41 +3,39 @@ package masterous.if4b.tulisaja;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface APIService {
-    @FormUrlEncoded
-    @POST("getAllPost")
-    Call<ValueData<List<Post>>> getPost(@Field("key") String key);
+
+    @GET("post")
+    Call<ValueData<List<Post>>> getPost();
 
     @FormUrlEncoded
-    @POST("loginUser")
-    Call<ValueNoData> login(@Field("key") String key,
-                            @Field("username") String username,
-                            @Field("password") String password);
+    @POST("auth/login")
+    Call<ValueData<User>> login(@Field("username") String username,
+                                @Field("password") String password);
 
     @FormUrlEncoded
-    @POST("registerUser")
-    Call<ValueNoData> register(@Field("key") String key,
-                               @Field("username") String username,
-                               @Field("password") String password);
+    @POST("auth/register")
+    Call<ValueData<User>> register(@Field("username") String username,
+                                   @Field("password") String password);
 
     @FormUrlEncoded
-    @POST("insertPost")
-    Call<ValueNoData> addPost(@Field("key") String key,
-                              @Field("username") String username,
+    @POST("post")
+    Call<ValueNoData> addPost(@Field("user_id") String userId,
                               @Field("content") String content);
 
     @FormUrlEncoded
-    @POST("updatePost")
-    Call<ValueNoData> updatePost(@Field("key") String key,
-                                 @Field("id") String id,
+    @PUT("post")
+    Call<ValueNoData> updatePost(@Field("id") String id,
                                  @Field("content") String content);
 
-    @FormUrlEncoded
-    @POST("deletePost")
-    Call<ValueNoData> deletePost(@Field("key") String key,
-                                 @Field("id") String id);
+    @DELETE("post/{id}")
+    Call<ValueNoData> deletePost(@Path("id") String id);
 }

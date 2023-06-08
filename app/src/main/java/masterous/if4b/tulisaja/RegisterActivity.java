@@ -71,10 +71,10 @@ public class RegisterActivity extends AppCompatActivity {
     private void register(String username, String password) {
         binding.progressBar.setVisibility(View.VISIBLE);
         APIService api = Utility.getRetrofit().create(APIService.class);
-        Call<ValueNoData> call = api.register("dirumahaja", username, password);
-        call.enqueue(new Callback<ValueNoData>() {
+        Call<ValueData<User>> call = api.register(username, password);
+        call.enqueue(new Callback<ValueData<User>>() {
             @Override
-            public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
+            public void onResponse(Call<ValueData<User>> call, Response<ValueData<User>> response) {
                 binding.progressBar.setVisibility(View.GONE);
                 if (response.code() == 200) {
                     int success = response.body().getSuccess();
@@ -82,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     if (success == 1) {
                         Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
-                        Utility.setValue(RegisterActivity.this, "xUsername", username);
+                        Utility.setValue(RegisterActivity.this, "xUserId", response.body().getData().getId());
                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
@@ -95,7 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ValueNoData> call, Throwable t) {
+            public void onFailure(Call<ValueData<User>> call, Throwable t) {
                 binding.progressBar.setVisibility(View.GONE);
                 System.out.println("Retrofit Error : " + t.getMessage());
                 Toast.makeText(RegisterActivity.this, "Retrofit Error : " + t.getMessage(), Toast.LENGTH_SHORT).show();
